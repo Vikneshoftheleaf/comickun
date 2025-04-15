@@ -13,8 +13,10 @@ export default function Home() {
       const mangaWithCovers = data.data.map((manga) => {
         const coverArt = manga.relationships.find(rel => rel.type === 'cover_art');
         const coverFileName = coverArt?.attributes?.fileName;
+
+        
         const coverUrl = coverFileName
-          ? `https://uploads.mangadex.org/covers/${manga.id}/${coverFileName}.256.jpg`
+          ? `/api/popular-images?url=${encodeURIComponent(`https://uploads.mangadex.org/covers/${manga.id}/${coverFileName}.256.jpg`)}`
           : null;
 
         return {
