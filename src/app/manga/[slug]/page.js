@@ -17,7 +17,7 @@ export default function MangaProfile({ params }) {
     async function fetchMangaDetails() {
       setLoading(true);
 
-      const mangaRes = await fetch(`https://api.mangadex.org/manga/${id}?includes[]=author&includes[]=artist&includes[]=cover_art`);
+      const mangaRes = await fetch(`/api/manga?id=${id}`);
       const mangaData = await mangaRes.json();
       const mangaInfo = mangaData.data;
 
@@ -36,7 +36,7 @@ export default function MangaProfile({ params }) {
         author: mangaInfo.relationships.find(r => r.type === 'author')?.attributes?.name || 'Unknown',
       });
 
-      const chapterRes = await fetch(`https://api.mangadex.org/chapter?manga=${id}&translatedLanguage[]=en&order[chapter]=asc&limit=100`);
+      const chapterRes = await fetch(`/api/chapters?id=${id}`);
       const chapterData = await chapterRes.json();
       setChapters(chapterData.data);
 

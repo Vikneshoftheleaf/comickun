@@ -7,7 +7,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchManga() {
-      const res = await fetch('https://api.mangadex.org/manga?limit=10&order[followedCount]=desc&includes[]=cover_art');
+      const res = await fetch('/api/popular');
       const data = await res.json();
 
       const mangaWithCovers = data.data.map((manga) => {

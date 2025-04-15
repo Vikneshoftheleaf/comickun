@@ -24,7 +24,7 @@ export default function ReadPage({ params }) {
         setError(null);
 
         // Fetch image data
-        const res = await fetch(`https://api.mangadex.org/at-home/server/${chapterId}`);
+        const res = await fetch(`/api/read?chapterId=${chapterId}`);
         const data = await res.json();
         const baseUrl = data.baseUrl;
         const hash = data.chapter.hash;
@@ -34,7 +34,7 @@ export default function ReadPage({ params }) {
         setPages(fullPageUrls);
 
         // Chapter metadata
-        const metaRes = await fetch(`https://api.mangadex.org/chapter/${chapterId}`);
+        const metaRes = await fetch(`/api/meta?chapterId=${chapterId}`);
         const metaData = await metaRes.json();
         setChapterInfo(metaData.data?.attributes || null);
 
@@ -43,7 +43,7 @@ export default function ReadPage({ params }) {
         setMangaId(mid);
 
         // Get all chapters of manga
-        const chapterListRes = await fetch(`https://api.mangadex.org/manga/${mid}/feed?limit=500&translatedLanguage[]=en&order[chapter]=asc`);
+        const chapterListRes = await fetch(`/api/panels?mangaId=${mid}`);
         const chapterListData = await chapterListRes.json();
 
         const chapterList = chapterListData.data;
