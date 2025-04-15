@@ -24,7 +24,7 @@ export default function MangaProfile({ params }) {
       const coverRel = mangaInfo.relationships.find(r => r.type === 'cover_art');
       const coverFileName = coverRel?.attributes?.fileName;
       const coverImg = coverFileName
-        ? `/api/image-proxy?url=${encodeURIComponent(`https://uploads.mangadex.org/covers/${id}/${coverFileName}.512.jpg`)}`
+        ? `/api/popular-images?url=${encodeURIComponent(`https://uploads.mangadex.org/covers/${id}/${coverFileName}.512.jpg`)}`
         : null;
 
       setCoverUrl(coverImg);
