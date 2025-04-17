@@ -79,7 +79,7 @@ export default function BottomDrawerSearch() {
                 style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
                 onClick={() => setOpen(false)}
             >
-                <div className="transition-colors duration-300 dark:bg-[#111] absolute bottom-0 pb-8 left-0 right-0 bg-gray-100 text-gray-800 rounded-t-2xl px-4  max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+                <div className="transition-colors duration-300 dark:bg-[#111] absolute min-h-[90vh] bottom-0 pb-8 left-0 right-0 bg-gray-100 text-gray-800 rounded-t-2xl px-4  overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                     {/* Search Input */}
 
                     <div className='sticky dark:bg-[#111] top-0 flex items-center gap-2 h-full py-6 w-full bg-gray-100 border-gray-300  '>
