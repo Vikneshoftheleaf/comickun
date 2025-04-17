@@ -11,7 +11,11 @@ export async function GET(req) {
 
   try {
     const res = await fetch(
-      `https://api.mangadex.org/manga?title=${title}&limit=10&includes[]=cover_art`
+      `https://api.mangadex.org/manga?title=${title}&limit=10&includes[]=cover_art`, {
+        headers: {
+          'User-Agent': 'comickun/1.0',
+              },
+      }
     );
 
     if (!res.ok) {

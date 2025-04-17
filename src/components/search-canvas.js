@@ -67,7 +67,7 @@ export default function BottomDrawerSearch() {
                 <input
                     type="text"
                     placeholder="Search comics..."
-                    className="hidden md:block dark:bg-gray-800 bg-gray-200 text-gray-800 px-3 py-1 rounded-md  w-64 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    className="hidden md:block dark:bg-zinc-800 bg-gray-200 text-gray-800 px-3 py-1 rounded-md  w-64 focus:outline-none focus:ring-2 focus:ring-gray-500"
                     readOnly
                 />
             </div>
@@ -86,7 +86,7 @@ export default function BottomDrawerSearch() {
 
 
 
-                        <span className='bg-gray-200 dark:bg-gray-800 dark:text-gray-100 p-2 rounded text-gray-500'>
+                        <span className='bg-gray-200 dark:bg-zinc-800 dark:text-gray-100 p-2 rounded text-gray-500'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg>
@@ -95,12 +95,12 @@ export default function BottomDrawerSearch() {
                         <input
                             type="text"
                             placeholder="Search comics..."
-                            className="dark:bg-gray-800 dark:text-gray-100 w-full p-2 rounded bg-gray-200 text-gray-800 "
+                            className="dark:bg-zinc-800 dark:text-gray-100 w-full p-2 rounded bg-gray-200 text-gray-800 focus:outline-none "
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                         />
 
-                        <button className='rounded p-2 bg-gray-200 dark:bg-gray-800 dark:text-gray-100 text-gray-500' onClick={() => setOpen(false)}>
+                        <button className='rounded p-2 bg-gray-200 dark:bg-zinc-800 dark:text-gray-100 text-gray-500' onClick={() => setOpen(false)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
@@ -115,7 +115,7 @@ export default function BottomDrawerSearch() {
                             <Link
                                 href={`/manga-page/${item.id}`}
                                 key={item.id}
-                                className="dark:bg-gray-800 dark:text-gray-100 flex items-center bg-gray-200 rounded p-2 gap-4 hover:bg-gray-300 transition"
+                                className="dark:bg-zinc-800 dark:text-gray-100 flex items-center bg-gray-200 rounded p-2 gap-4 hover:bg-gray-300 transition"
                             >
                                 {item.imageUrl && (
                                     <img
