@@ -54,10 +54,10 @@ export default function BottomDrawerSearch() {
 
             <div
                 onClick={() => setOpen(true)}
-                className="cursor-pointer p-2 md:p-0 bg-gray-800 md:bg-transparent rounded md:rounded-none flex items-center gap-2 text-white"
+                className="bg-zinc-200 dark:bg-zinc-800 text-gray-500 cursor-pointer p-2 md:p-0  rounded md:rounded-none flex items-center gap-2"
             >
                 {/* Icon for all screens */}
-                <span className="text-xl block lg:hidden">
+                <span className="text-xl dark:text-zinc-100 block lg:hidden ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
@@ -67,7 +67,7 @@ export default function BottomDrawerSearch() {
                 <input
                     type="text"
                     placeholder="Search comics..."
-                    className="hidden md:block dark:bg-zinc-800 bg-gray-200 text-gray-800 px-3 py-1 rounded-md  w-64 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    className="hidden md:block dark:bg-zinc-800 bg-gray-200 text-gray-800 p-2 rounded-md  w-64 focus:outline-none focus:ring-2 focus:ring-gray-500"
                     readOnly
                 />
             </div>
