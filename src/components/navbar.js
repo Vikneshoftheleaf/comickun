@@ -1,7 +1,7 @@
 'use client';
-
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
+import SearchCanvas from './search-canvas';
 export default function Navbar() {
   const [isClient, setIsClient] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -41,8 +41,10 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white dark:bg-zinc-900 text-black dark:text-white px-4 py-3 flex justify-between items-center shadow-md">
-      <h1 className="text-xl font-bold cursor-pointer" onClick={() => location.href = '/'}>ComicKun</h1>
+      <Link href={'/'} className="text-xl font-bold cursor-pointer">ComicKun</Link>
 
+
+      <SearchCanvas />
 
       <button
         onClick={toggleDarkMode}
@@ -51,7 +53,7 @@ export default function Navbar() {
         {darkMode ? '🌞 Light' : '🌙 Dark'}
       </button>
 
-      {isSearchOpen && <SearchResults results={searchResults} onClose={closeSearchPanel} />}
+      
     </nav>
   );
 }

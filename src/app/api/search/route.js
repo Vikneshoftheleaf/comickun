@@ -1,26 +1,42 @@
+// app/api/search/route.ts
 import { NextResponse } from 'next/server';
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
-  const query = searchParams.get('q');
+  const title = searchParams.get('title') ?? '';
 
-  if (!query || query.trim() === '') {
-    return NextResponse.json([], { status: 400 });
+  if (!title.trim()) {
+    return NextResponse.json({ data: [] });
   }
 
   try {
-    const searchRes = await fetch(`https://api.mangadex.org/manga?title=${query}&limit=10&includes[]=cover_art`);
-    const searchData = await searchRes.json();
+    const res = await fetch(
+      `https://api.mangadex.org/manga?title=${title}&limit=10&includes[]=cover_art`
+    );
 
-    const results = searchData.data.map((manga) => ({
-      id: manga.id,
-      title: manga.attributes.title.en || manga.attributes.title[Object.keys(manga.attributes.title)[0]],
-      coverImage: manga.relationships.find(rel => rel.type === 'cover_art')?.attributes?.file_name
-    }));
+    if (!res.ok) {
+      return NextResponse.json({ data: [] });
+    }
 
-    return NextResponse.json(results, { status: 200 });
+    const data = await res.json();
+
+    const results = data.data.map((manga) => {
+      const cover = manga.relationships.find((r) => r.type === 'cover_art');
+      const fileName = cover?.attributes?.fileName;
+      const imageUrl = fileName
+        ? `https://uploads.mangadex.org/covers/${manga.id}/${fileName}.256.jpg`
+        : null;
+
+      return {
+        id: manga.id,
+        title: manga.attributes.title.en || 'No Title',
+        imageUrl,
+      };
+    });
+
+    return NextResponse.json({ data: results });
   } catch (error) {
-    console.error('Error fetching search results:', error);
-    return NextResponse.json([], { status: 500 });
+    console.error(error);
+    return NextResponse.json({ data: [] });
   }
 }
